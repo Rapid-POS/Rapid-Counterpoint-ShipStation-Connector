@@ -17,14 +17,14 @@ If you would like the ShipStation connector but your system does not meet these 
 
 ## Table of Contents
 - [Minimum System Requirements](#minimum-system-requirements)
-- [SECTION 1: Overview of the information sent to ShipStation by the connector](#section-1-overview-of-the-information-sent-to-shipstation-by-the-connector)
-- [SECTION 2: Mapping of specific fields sent to ShipStation for release tickets](#section-2-mapping-of-specific-fields-sent-to-shipstation-for-release-tickets)
-- [SECTION 3: Mapping of specific fields sent to ShipStation for transfer outs](#section-3-mapping-of-specific-fields-sent-to-shipstation-for-transfer-outs)
-- [SECTION 4: Special Note on Country Codes](#section-4-special-note-on-country-codes)
-- [SECTION 5: Tracking information imported by the connector from ShipStation](#section-5-tracking-information-imported-by-the-connector-from-shipstation)
-- [SECTION 6: Configuration](#section-6-configuration)
-- [SECTION 7: Configuration Ship-Via Codes](#section-7-configuration-ship-via-codes)
-- [SECTION 8: ShipStation Carriers Table](#section-8-shipstation-carriers-table)
+- [Section 1: Overview of the information sent to ShipStation by the connector](#section-1-overview-of-the-information-sent-to-shipstation-by-the-connector)
+- [Section 2: Mapping of specific fields sent to ShipStation for release tickets](#section-2-mapping-of-specific-fields-sent-to-shipstation-for-release-tickets)
+- [Section 3: Mapping of specific fields sent to ShipStation for transfer outs](#section-3-mapping-of-specific-fields-sent-to-shipstation-for-transfer-outs)
+- [Section 4: Special Note on Country Codes](#section-4-special-note-on-country-codes)
+- [Section 5: Tracking information imported by the connector from ShipStation](#section-5-tracking-information-imported-by-the-connector-from-shipstation)
+- [Section 6: Configuration](#section-6-configuration)
+- [Section 7: Configuration Ship-Via Codes](#section-7-configuration-ship-via-codes)
+- [Section 8: ShipStation Carriers Table](#section-8-shipstation-carriers-table)
 - [Conclusion](#conclusion)
 
 
@@ -192,6 +192,8 @@ A background task runs on a scheduled interval (default is every 15 minutes, but
 - One tracking number may be associated with a transfer out.  
 
 For release tickets, the retrieved tracking information is written directly to the release ticket itself. If/when the release ticket is posted, the same information is also copied into both the related ticket history and order history records, ensuring that tracking details remain accessible after posting.
+
+
 
 For posted transfer outs, the tracking information is updated as well, but it is only visible in the posted transfer out lookup, which can be accessed by clicking “Select Transfer” on the Transfer In screen.  
 
