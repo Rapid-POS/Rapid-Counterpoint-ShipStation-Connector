@@ -193,7 +193,7 @@ A background task runs on a scheduled interval (default is every 15 minutes, but
 
 For release tickets, the retrieved tracking information is written directly to the release ticket itself. If/when the release ticket is posted, the same information is also copied into both the related ticket history and order history records, ensuring that tracking details remain accessible after posting.
 
-
+![Package Tracking Numbers Example on a Release Ticket](./images/package-tracking-numbers-release-ticket.png)
 
 For posted transfer outs, the tracking information is updated as well, but it is only visible in the posted transfer out lookup, which can be accessed by clicking “Select Transfer” on the Transfer In screen.  
 
