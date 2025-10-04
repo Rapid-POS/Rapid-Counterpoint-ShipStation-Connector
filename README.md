@@ -128,24 +128,24 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Transfer Out # | Order Number |
 | Document Identifier (of the specific release ticket) | Order Key* |
 | Transfer Out Posting Date/Time | Order Date |
-| Payment Date (date of last payment if multiple) | Paid Date |
+| ~~Payment Date (date of last payment if multiple)~~ | Paid Date |
 | Ship Date | Ship By Date |
 | Hard coded to 'Awaiting Shipment' | Order Status |
-| Customer # | Sold To Customer ID* |
-| Billing Email Address 1 | Sold To Customer Email |
-| Total | Total Paid (in $) |
-| Tax Total | Tax Paid (in $) |
-| Misc Charge Total | Shipping Paid (in $) |
+| ~~Customer #~~ | Sold To Customer ID* |
+| ~~Billing Email Address 1~~ | Sold To Customer Email |
+| ~~Total~~ | Total Paid (in $) |
+| ~~Tax Total~~ | Tax Paid (in $) |
+| ~~Misc Charge Total~~ | Shipping Paid (in $) |
 | Ship-via code (on transfer out custom tab) | Shipping Service |
-| Billing Name | Sold To Name |
-| Billing Address 1 | Sold To Street1 |
-| Billing Address 2 | Sold To Street2 |
-| Billing Address 3 | Sold To Street3 |
-| Billing City | Sold To City |
-| Billing State | Sold To State |
-| Billing Zip Code | Sold To Postal Code |
-| Billing Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
-| Billing Phone 1 | Sold To Phone |
+| ~~Billing Name~~ | Sold To Name |
+| ~~Billing Address 1~~ | Sold To Street1 |
+| ~~Billing Address 2~~ | Sold To Street2 |
+| ~~Billing Address 3~~ | Sold To Street3 |
+| ~~Billing City~~ | Sold To City |
+| ~~Billing State~~ | Sold To State |
+| ~~Billing Zip Code~~ | Sold To Postal Code |
+| ~~Billing Country~~ – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
+| ~~Billing Phone 1~~ | Sold To Phone |
 | “Transfer To” Location Description | Ship To Name |
 | “Transfer To” Location Address 1 | Ship To Street 1 |
 | “Transfer To” Location Address 2 | Ship To Street 2 |
