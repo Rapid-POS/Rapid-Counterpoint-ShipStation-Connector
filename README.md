@@ -197,11 +197,17 @@ For release tickets, the retrieved tracking information is written directly to t
 
 For posted transfer outs, the tracking information is updated as well, but it is only visible in the posted transfer out lookup, which can be accessed by clicking “Select Transfer” on the Transfer In screen.  
 
+![Package Tracking Numbers Example on a Transfer Out](./images/package-tracking-numbers-transfer-out.png)
+
 ---
 
 ## SECTION 6: Configuration
 
 The connector includes several configuration options that control how it interacts with ShipStation and Counterpoint. These settings should be reviewed carefully during setup and adjusted only when necessary.
+
+![ShipStation Connector Menu Codes in Counterpoint](./images/shipstation-connector-menu-codes.png)
+
+![ShipStation Connector Configuration in Counterpoint](./images/shipstation-configuration.png)
 
 **Account Name, Username, and API Key**  
 These fields identify the ShipStation account and provide the authentication credentials needed for the connector to communicate with ShipStation.
@@ -214,6 +220,10 @@ For clients with multiple inventory locations in Counterpoint, ShipStation can b
 
 This configuration option allows you to assign the ShipStation Warehouse ID value to the corresponding location in Counterpoint. When documents are pushed from Counterpoint to ShipStation, the correct Ship From location will be set automatically.
 
+![Ship From Locations in ShipStation](./images/shipstation-website-ship-from-locations.png)
+
+![ShipStation Warehouse ID Assigned to Counterpoint Location on Custom Tab](./images/counterpoint-location-custom-tab-warehouse-ID.png)
+
 **Order Weight Unit**  
 The weight field on an item record in Counterpoint stores only a numeric value; it does not specify the unit of measure. The connector requires all item weights to use a single, consistent unit of measure: pounds, ounces, or grams. Set this option to match the unit used across all item records in Counterpoint. 
  - If all items' weights are entered as pounds, select pounds. 
@@ -221,6 +231,8 @@ The weight field on an item record in Counterpoint stores only a numeric value; 
  - If items are stored in mixed units, you must standardize them to a single unit before integration. 
 - The setting applies globally and must remain consistent across all item records in Counterpoint. 
 - When weights are sent to ShipStation, the numerical value and configured unit of measure are converted into ShipStation’s format, expressed in pounds and ounces (for example, 1.5 lb becomes 1 lb 8 oz). 
+
+![Counterpoint Item Record with Weight on Other Tab](./images/counterpoint-item-other-tab-weight-field.png)
 
 **Tracking Last Get Date (UTC)**  
 Release tickets and transfer outs are pushed to ShipStation immediately, but tracking information is imported on a schedule (typically every 15 minutes). This field displays the last time tracking information was imported, shown in Coordinated Universal Time (UTC).
@@ -233,6 +245,8 @@ ShipStation supports multiple “stores” within its user interface. These stor
 
 Each ShipStation store has a Store ID value (retrievable only via API). This configuration allows you to assign a ShipStation Store ID so that release tickets and transfer outs are pushed to a specific ShipStation store. Many clients will use only a single ShipStation store, but the option is available for more complex setups.
 
+![Store Setup in ShipStation](./images/shipstation-website-store-setup.png)
+
 **Internal Configuration Options**  
 Additional internal configuration options exist within the connector. These are primarily used by programmers to optimize performance or to assist in troubleshooting. These values should not be adjusted by end users.
 
@@ -244,7 +258,15 @@ When the ShipStation connector is installed, additional fields are added to the 
 
 For example, ship-via codes such as "store pickup" or "delivery" usually do not require shipping labels and do not need to be pushed to ShipStation. In contrast, ship-via codes representing specific carriers or shipping methods (such as "overnight shipping") should be sent to ShipStation.  
 
-These send/do-not-send flags must be configured after the connector is installed. Once configured, a ship-via code can then be assigned on the ship-to address screen or on the custom tab of the transfer out screen.
+These send/do-not-send flags must be configured after the connector is installed. 
+
+![Ship Via Codes in Table View in Counterpoint](./images/counterpoint-ship-via-codes-table-view.png)
+
+Once configured, a ship-via code can then be assigned on the ship-to address screen or on the custom tab of the transfer out screen.
+
+![Ship Via Code Assigned to a Ship-To Address](./images/counterpoint-ship-to-with-ship-via-code-assigned.png)
+
+![Ship Via Code Assigned to a Transfer Out on the Custom Tab](./images/counterpoint-transfer-out-with-ship-via-code-assigned.png)
 
 ### Ship-Via Code Processing Rules
 
@@ -278,6 +300,8 @@ In Counterpoint, the ship-via code on orders and release tickets may be populate
 **When ship-via code is blank:** If the ship-via code field in the Carriers Table remains blank, the existing ship-via code already assigned in Counterpoint is retained whenever that carrier code is used. The value is not updated or overwritten.  
 
 **When ship-via code is populated:** If a ship-via code is manually entered in the Carriers Table, the Counterpoint ship-via code is updated each time the associated carrier is used in ShipStation and tracking data is imported. This ensures that imported tracking numbers apply both the carrier information and the designated ship-via code in Counterpoint.  
+
+![Ship Via Code Assigned to a ShipStation Carrier Record in Counterpoint](./images/counterpoint-shipstation-carriers-record.png)
 
 For best results, review the Carriers Table periodically and ensure that ship-via codes are populated where appropriate.  
 
