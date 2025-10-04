@@ -116,6 +116,7 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 Note: In ShipStation, the order line will appear with a line total. This line total is calculated by ShipStation using the quantity and unit cost. The connector does not push a line total value directly.  
 
 ---
+<span style="color:red">
 
 ## SECTION 3: Mapping of specific fields sent to ShipStation for transfer outs
 
@@ -160,6 +161,7 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 ### Transfer Out Line Fields
 Note: No line data is currently pushed for transfer outs.  
 
+</span>
 ---
 
 ## SECTION 4: Special Note on Country Codes
