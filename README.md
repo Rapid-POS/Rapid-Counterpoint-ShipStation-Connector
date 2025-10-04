@@ -116,52 +116,50 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 Note: In ShipStation, the order line will appear with a line total. This line total is calculated by ShipStation using the quantity and unit cost. The connector does not push a line total value directly.  
 
 ---
-<span style="color:red">
 
 ## SECTION 3: Mapping of specific fields sent to ShipStation for transfer outs
 
 Note: ShipStation Fields marked with a * may not be visible in the user interface in ShipStation. The data is sent to ShipStation and is only visible to a programmer querying the ShipStation APIs.  
 
-### Transfer Out Header Fields
+### Transfer Out Header Fields  
 
 | Counterpoint Field | ShipStation Field |
 |---------------------|-------------------|
-| **`Transfer Out #`** | **`Order Number`** |
-| **`Document Identifier (of the specific release ticket)`** | **`Order Key*`** |
-| **`Transfer Out Posting Date/Time`** | **`Order Date`** |
-| **`Payment Date (date of last payment if multiple)`** | **`Paid Date`** |
-| **`Ship Date`** | **`Ship By Date`** |
-| Hard coded to 'Awaiting Shipment' | **`Order Status`** |
-| **`Customer #`** | **`Sold To Customer ID*`** |
-| **`Billing Email Address 1`** | **`Sold To Customer Email`** |
-| **`Total`** | **`Total Paid (in $)`** |
-| **`Tax Total`** | **`Tax Paid (in $)`** |
-| **`Misc Charge Total`** | **`Shipping Paid (in $)`** |
-| **`Ship-via code (on transfer out custom tab)`** | **`Shipping Service`** |
-| **`Billing Name`** | **`Sold To Name`** |
-| **`Billing Address 1`** | **`Sold To Street1`** |
-| **`Billing Address 2`** | **`Sold To Street2`** |
-| **`Billing Address 3`** | **`Sold To Street3`** |
-| **`Billing City`** | **`Sold To City`** |
-| **`Billing State`** | **`Sold To State`** |
-| **`Billing Zip Code`** | **`Sold To Postal Code`** |
-| **`Billing Country – Required ISO code`** | **`Sold To Country`** |
-| **`Billing Phone 1`** | **`Sold To Phone`** |
-| **`“Transfer To” Location Description`** | **`Ship To Name`** |
-| **`“Transfer To” Location Address 1`** | **`Ship To Street 1`** |
-| **`“Transfer To” Location Address 2`** | **`Ship To Street 2`** |
-| **`“Transfer To” Location Address 3`** | **`Ship To Street 3`** |
-| **`“Transfer To” Location City`** | **`Ship To City`** |
-| **`“Transfer To” Location State`** | **`Ship To State`** |
-| **`“Transfer To” Location Zip Code`** | **`Ship To Postal Code`** |
-| **`“Transfer To” Location Country – Required ISO code`** | **`Ship To Country`** |
-| **`“Transfer To” Location Phone 1`** | **`Ship To Phone`** |
-| **`[Configurable, T&M, mapped] Ship-From Location (Stocking Loc ID)`** | **`Warehouse ID`** |
+| Transfer Out # | Order Number |
+| Document Identifier (of the specific release ticket) | Order Key* |
+| Transfer Out Posting Date/Time | Order Date |
+| Payment Date (date of last payment if multiple) | Paid Date |
+| Ship Date | Ship By Date |
+| Hard coded to 'Awaiting Shipment' | Order Status |
+| Customer # | Sold To Customer ID* |
+| Billing Email Address 1 | Sold To Customer Email |
+| Total | Total Paid (in $) |
+| Tax Total | Tax Paid (in $) |
+| Misc Charge Total | Shipping Paid (in $) |
+| Ship-via code (on transfer out custom tab) | Shipping Service |
+| Billing Name | Sold To Name |
+| Billing Address 1 | Sold To Street1 |
+| Billing Address 2 | Sold To Street2 |
+| Billing Address 3 | Sold To Street3 |
+| Billing City | Sold To City |
+| Billing State | Sold To State |
+| Billing Zip Code | Sold To Postal Code |
+| Billing Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
+| Billing Phone 1 | Sold To Phone |
+| “Transfer To” Location Description | Ship To Name |
+| “Transfer To” Location Address 1 | Ship To Street 1 |
+| “Transfer To” Location Address 2 | Ship To Street 2 |
+| “Transfer To” Location Address 3 | Ship To Street 3 |
+| “Transfer To” Location City | Ship To City |
+| “Transfer To” Location State | Ship To State |
+| “Transfer To” Location Zip Code | Ship To Postal Code |
+| “Transfer To” Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Ship To Country |
+| “Transfer To” Location Phone 1 | Ship To Phone |
+| [*Configurable, T&M, mapped*] Ship-From Location (Stocking Loc ID) | Warehouse ID |
 
 ### Transfer Out Line Fields
 Note: No line data is currently pushed for transfer outs.  
 
-</span>
 ---
 
 ## SECTION 4: Special Note on Country Codes
