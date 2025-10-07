@@ -1,5 +1,5 @@
 # Rapid POS ShipStation Connector – Version 2.3
-Updated 10/1/2025
+Updated 10/7/2025
 
 ---
 
@@ -74,7 +74,8 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Payment Date (date of last payment if multiple) | Paid Date |
 | Ship Date | Ship By Date |
 | Hard coded to '*Awaiting Shipment*' | Order Status |
-| [*Configurable, T&M, mapped*] Ship-From Location (Stocking Location ID) | Warehouse ID |
+| [*Configurable, T&M, mapped*] Ship-From Location (Stocking Location ID) | Warehouse ID* - *Specifies the warehouse where the order is to ship from* |
+| [*Configurable*] ShipStation Store ID configured for Release Tickets | Store ID* - *ID of store that is associated with the order* |
 | Ticket Profile Alpha 3 (can be populated with ship-via code or other header field) | Shipping Service |
 | Total | Total Paid (in $) |
 | Tax Total | Tax Paid (in $) |
@@ -125,27 +126,22 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 
 | Counterpoint Field | ShipStation Field |
 |---------------------|-------------------|
-| Transfer Out # | Order Number |
-| Document Identifier (of the specific release ticket) | Order Key* |
-| Transfer Out Posting Date/Time | Order Date |
-| ~~Payment Date (date of last payment if multiple)~~ | Paid Date |
+| Transfer Out Number | Order Number |
+| Transfer Out Last Maintained Date/Time | Order Date |
 | Ship Date | Ship By Date |
 | Hard coded to 'Awaiting Shipment' | Order Status |
-| ~~Customer #~~ | Sold To Customer ID* |
-| ~~Billing Email Address 1~~ | Sold To Customer Email |
-| ~~Total~~ | Total Paid (in $) |
-| ~~Tax Total~~ | Tax Paid (in $) |
-| ~~Misc Charge Total~~ | Shipping Paid (in $) |
+| [*Configurable, T&M, mapped*] Ship-From Location (Stocking Location ID) | Warehouse ID* - *Specifies the warehouse where the order is to ship from* |
+| [*Configurable*] ShipStation Store ID configured for Transfer Outs | Store ID* - *ID of store that is associated with the order* |
 | Ship-via code (on transfer out custom tab) | Shipping Service |
-| ~~Billing Name~~ | Sold To Name |
-| ~~Billing Address 1~~ | Sold To Street1 |
-| ~~Billing Address 2~~ | Sold To Street2 |
-| ~~Billing Address 3~~ | Sold To Street3 |
-| ~~Billing City~~ | Sold To City |
-| ~~Billing State~~ | Sold To State |
-| ~~Billing Zip Code~~ | Sold To Postal Code |
-| ~~Billing Country~~ – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
-| ~~Billing Phone 1~~ | Sold To Phone |
+| "Transfer From" Location Name | Sold To Name |
+| "Transfer From" Location Address 1 | Sold To Street1 |
+| "Transfer From" Location Address 2 | Sold To Street2 |
+| "Transfer From" Location Address 3 | Sold To Street3 |
+| "Transfer From" Location City | Sold To City |
+| "Transfer From" Location State | Sold To State |
+| "Transfer From" Location Zip Code | Sold To Postal Code |
+| "Transfer From" Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
+| "Transfer From" Location Phone 1 | Sold To Phone |
 | “Transfer To” Location Description | Ship To Name |
 | “Transfer To” Location Address 1 | Ship To Street 1 |
 | “Transfer To” Location Address 2 | Ship To Street 2 |
@@ -155,7 +151,6 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | “Transfer To” Location Zip Code | Ship To Postal Code |
 | “Transfer To” Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Ship To Country |
 | “Transfer To” Location Phone 1 | Ship To Phone |
-| [*Configurable, T&M, mapped*] Ship-From Location (Stocking Loc ID) | Warehouse ID |
 
 ### Transfer Out Line Fields
 Note: No line data is currently pushed for transfer outs.  
