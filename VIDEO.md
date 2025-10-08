@@ -1,6 +1,6 @@
 # ShipStation Connector Video
 
-The video is posted on YouTube at: 
+The video is posted on Rapid's YouTube channel: [**Rapid POS: Overview of the ShipStation Connector v2.3 (Released October 2025)**](https://youtube.com/watch?v=lj0hBLYEE0s)
 
 Below is a quick outline of the video along with timestamps for easy reference:
 
