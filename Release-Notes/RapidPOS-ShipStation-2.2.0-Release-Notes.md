@@ -1,4 +1,4 @@
-# ShipStation Integration v2.2.0 Release Notes
+# Rapid POS ShipStation Connector v2.2.0 Release Notes
 
 _Release Date: April 8, 2025_
 
