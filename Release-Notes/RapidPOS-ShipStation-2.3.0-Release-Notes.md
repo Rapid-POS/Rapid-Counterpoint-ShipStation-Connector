@@ -20,11 +20,11 @@ Added functionality to push up shipping information for **store-to-store transfe
 ### Ship-Via Code Controls for Release Tickets
 Introduced a new flag for **ShipStation Send Release Ticket** within the ship-via Code table.
 
-- Refer to the [**client guide**](/docs/README.md) for details (now provided as a README file in GitHub).  
+- Refer to the [**client guide**](/README.md) for details (now provided as a README file in GitHub).  
 - Theis flag allow users to specify which release tickets should be sent to ShipStation.  
   - If a **ship-via code** is **blank on a release ticket**, the ticket **will still be sent** to ShipStation.  
 
 ### ShipStation Store ID Configuration Options
 Added new **ShipStation configuration options** for defining **Store IDs** for both **release tickets** and **transfer outs**.
 
-- Refer to the [**client guide**](/docs/README.md) for details (now provided as a README file in GitHub).
+- Refer to the [**client guide**](/README.md) for details (now provided as a README file in GitHub).
