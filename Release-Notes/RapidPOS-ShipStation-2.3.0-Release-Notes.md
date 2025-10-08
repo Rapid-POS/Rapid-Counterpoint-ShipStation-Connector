@@ -9,7 +9,7 @@ _Release Date: October 7, 2025_
 ### Store-to-Store Transfer Out Shipping Information
 Added functionality to push up shipping information for **store-to-store transfers**.
 
-- Refer to the [**client guide**](/docs/README.md) for details (now provided as a README file in GitHub).  
+- Refer to the [**client guide**](/README.md) for details (now provided as a README file in GitHub).  
 - Added a field on the **Custom Tab** of transfer outs that can  be populated with a ship-via code
 - This upgrade adds two new flags to each **ship-via code**:
     - **Valid for Transfer** allows the ship-via code to be applied to transfers
