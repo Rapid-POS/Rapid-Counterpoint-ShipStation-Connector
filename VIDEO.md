@@ -6,8 +6,7 @@ The video is posted on Rapid's YouTube channel: [**Rapid POS: Overview of the Sh
 
 Below is a quick outline of the video along with timestamps for easy reference:
 
-#### 1. Overview of Rapid's ShipStation to Counterpoint Connector
-(00–00:19)  
+#### 1. Overview of Rapid's ShipStation to Counterpoint Connector (00–00:19)  
 - Purpose: Push order release tickets (with ship-to addresses) from Counterpoint to ShipStation for shipping label creation
 - Secondary use: Push posted transfer outs for store-to-store shipment label creation
 
