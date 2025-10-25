@@ -50,6 +50,6 @@ Below is a quick outline of the video along with timestamps for easy reference:
 - The ShipStation Carriers feature maps ShipStation carrier codes to Counterpoint ship-via codes
 - When a label is created, the actual carrier and tracking number flow back into Counterpoint
 
-#### 11. Summary (17:04–End)  
+#### 11. Summary (17:04–17:45)  
 - The ShipStation connector pushes release tickets (with ship-to addresses) and posted transfer outs (with ship-via codes) to ShipStation for shipping label creation
 - The connector pulls tracking numbers from ShipStation back into Counterpoint
