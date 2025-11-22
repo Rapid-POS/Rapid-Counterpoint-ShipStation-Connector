@@ -1,6 +1,6 @@
 # Rapid POS ShipStation Connector v2.3.1 Release Notes
 
-**Coming soon!** ---->  _Release Date: **Potentially** November 24, 2025_
+_Release Date: November 24, 2025_
 
 ---
 
