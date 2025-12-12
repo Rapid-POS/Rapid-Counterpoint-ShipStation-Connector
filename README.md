@@ -1,5 +1,5 @@
 # Rapid POS ShipStation Connector – Version 2.3
-Updated 10/7/2025
+Updated 12/11/2025
 
 ---
 
@@ -8,8 +8,10 @@ The Rapid ShipStation connector enables data transfer between Counterpoint and S
 ---
 
 ## Minimum System Requirements:
-- Minimum Counterpoint version: **8.5.6.2**
-- Minimum SQL Server version: **2016**
+- Minimum Counterpoint version: **8.5.6.2**  
+- Minimum SQL Server version: **2016**  
+- Minimum Windows Server version: **2016**  
+- Minimum PowerShell version: **5.1**  
 
 If you would like the ShipStation connector but your system does not meet these minimum requirements, please consult your Care Team Lead (vCIO) for an upgrade quote.
 
