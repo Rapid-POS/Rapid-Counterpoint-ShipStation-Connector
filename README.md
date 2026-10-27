@@ -1,9 +1,9 @@
-# Rapid POS ShipStation Connector – Version 2.3
-Updated 7/7/2026
+# Rapid POS ShipStation Connector – Version 2.4
+Updated 10/27/2026
 
 ---
 
-The Rapid ShipStation connector enables data transfer between Counterpoint and ShipStation, allowing for faster creation of shipping labels. The connector syncs information from **order release tickets** that include a ship-to address, and it can also be used to sync shipping information related to **transfer outs**.
+The Rapid ShipStation connector enables data transfer between Counterpoint and ShipStation, allowing for faster creation of shipping labels. The connector syncs information from **order release tickets** that include a **ship-to address**, and it can also be used to sync shipping information related to **transfer outs**.
 
 ---
 
@@ -17,6 +17,8 @@ If you would like the ShipStation connector but your system does not meet these 
 
 > [!WARNING]
 > Your environment must meet our [CI/CD Connector Requirements](https://github.com/Rapid-POS/Miscellaneous-Documents/blob/main/CICD-Connector-Requirements.md) (server access, firewall rules, etc.) before any install or upgrade. Troubleshooting, manual installs, or follow-up work resulting from unmet requirements will be billed at standard T&M rates.
+>
+> The connector accesses the Counterpoint database through its own dedicated SQL Login, created automatically during installation. Do not change the password for this login or remove it. The connector depends on it, and the password is managed automatically by the upgrade process.
 
 ---
 
@@ -31,7 +33,6 @@ If you would like the ShipStation connector but your system does not meet these 
 - [Section 7: Configuration Ship-Via Codes](#section-7-configuration-ship-via-codes)
 - [Section 8: ShipStation Carriers Table](#section-8-shipstation-carriers-table)
 - [Conclusion](#conclusion)
-
 
 ---
 
@@ -62,7 +63,6 @@ The connector uses a **Windows Service** to continuously push information to Shi
 - Transfer outs are sent to ShipStation as soon as they are posted in Counterpoint.  
 - In most cases, both release tickets and transfer outs appear in ShipStation in less than 30 seconds (unless there is a backlog or a connectivity issue that causes delays).  
 
-
 ---
 
 ## SECTION 2: Mapping of specific fields sent to ShipStation for release tickets
@@ -87,7 +87,7 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Misc Charge Total | Shipping Paid (in $) |
 | Customer Number | Sold To Customer ID* |
 | Billing Email Address 1 | Sold To Customer Email |
-| Billing Name | Sold To Name |
+| Billing Name _(see Name Handling note below)_ | Sold To Name |
 | Billing Address 1 | Sold To Street1 |
 | Billing Address 2 | Sold To Street2 |
 | Billing Address 3 | Sold To Street3 |
@@ -96,7 +96,7 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Billing Zip Code | Sold To Postal Code |
 | Billing Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
 | Billing Phone 1 | Sold To Phone |
-| Shipping Name | Ship To Name |
+| Shipping Name _(see Name Handling note below)_ | Ship To Name |
 | Shipping Address 1 | Ship To Street 1 |
 | Shipping Address 2 | Ship To Street 2 |
 | Shipping Address 3 | Ship To Street 3 |
@@ -106,6 +106,13 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Shipping Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Ship To Country |
 | Shipping Phone 1 | Ship To Phone |
 
+**Name Handling:** If the Billing Name or Shipping Name on a release ticket is blank, the connector uses the first available value in the order below.
+
+- **Sold To Name:** Billing Name, billing First Name and Last Name, customer name, and then customer first and last name.
+- **Ship To Name:** Shipping Name, shipping First Name and Last Name, customer name, and then customer first and last name.
+- If only a first name or only a last name is entered, that name is used rather than skipping ahead to the customer name.
+- If no name is available at any level, the name is sent to ShipStation as an empty value.
+
 ### Release Ticket Line Fields
 
 | Counterpoint Label | ShipStation Field |
@@ -113,7 +120,7 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | Line Sequence Number | Line Item Key* |
 | Item Number | Item SKU |
 | Item Description | Item Name |
-| [*Configurable*] Item’s Unit Weight | Item Weight |
+| [*Configurable*] Item's Unit Weight | Item Weight |
 | Quantity Sold | Item Quantity |
 | Price | Item Unit Cost |
 | Tax Amount (allocated) | Item Unit Tax* |
@@ -147,15 +154,15 @@ Note: ShipStation Fields marked with a * may not be visible in the user interfac
 | "Transfer From" Location Zip Code | Sold To Postal Code |
 | "Transfer From" Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Sold To Country |
 | "Transfer From" Location Phone 1 | Sold To Phone |
-| “Transfer To” Location Description | Ship To Name |
-| “Transfer To” Location Address 1 | Ship To Street 1 |
-| “Transfer To” Location Address 2 | Ship To Street 2 |
-| “Transfer To” Location Address 3 | Ship To Street 3 |
-| “Transfer To” Location City | Ship To City |
-| “Transfer To” Location State | Ship To State |
-| “Transfer To” Location Zip Code | Ship To Postal Code |
-| “Transfer To” Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Ship To Country |
-| “Transfer To” Location Phone 1 | Ship To Phone |
+| "Transfer To" Location Description | Ship To Name |
+| "Transfer To" Location Address 1 | Ship To Street 1 |
+| "Transfer To" Location Address 2 | Ship To Street 2 |
+| "Transfer To" Location Address 3 | Ship To Street 3 |
+| "Transfer To" Location City | Ship To City |
+| "Transfer To" Location State | Ship To State |
+| "Transfer To" Location Zip Code | Ship To Postal Code |
+| "Transfer To" Location Country – [Required ISO code](https://www.shipstation.com/docs/api/models/address/) | Ship To Country |
+| "Transfer To" Location Phone 1 | Ship To Phone |
 
 ### Transfer Out Line Fields
 Note: No line data is currently pushed for transfer outs.  
@@ -166,7 +173,7 @@ Note: No line data is currently pushed for transfer outs.
 
 ShipStation requires all country codes in both ship-to addresses and location addresses to be formatted as valid two-letter ISO country codes.  
 
-You can review the current ISO country code list in ShipStation’s documentation:  
+You can review the current ISO country code list in ShipStation's documentation:  
 [ShipStation Address Model – Country Codes](https://www.shipstation.com/docs/api/models/address/)  
 
 - If the country field in Counterpoint is left blank, or if the value contains dashes, the connector will automatically default the country to US.
@@ -195,7 +202,7 @@ For release tickets, the retrieved tracking information is written directly to t
 
 ![Package Tracking Numbers Example on a Release Ticket](./images/counterpoint-package-tracking-numbers-release-ticket.png)
 
-For posted transfer outs, the tracking information is updated as well, but it is only visible in the posted transfer out lookup, which can be accessed by clicking “Select Transfer” on the Transfer In screen.  
+For posted transfer outs, the tracking information is updated as well, but it is only visible in the posted transfer out lookup, which can be accessed by clicking **Select Transfer** on the Transfer In screen.  
 
 ![Package Tracking Numbers Example on a Transfer Out](./images/counterpoint-package-tracking-numbers-transfer-out.png)
 
@@ -216,7 +223,7 @@ These fields identify the ShipStation account and provide the authentication cre
 This option allows the connector to be paused during troubleshooting, stopping data flow without needing to stop the Windows Service.
 
 **Send Warehouse ID?**  
-For clients with multiple inventory locations in Counterpoint, ShipStation can be configured with multiple “Ship From” locations. Each Ship From location is assigned a ShipStation Warehouse ID (retrievable only via API). 
+For clients with multiple inventory locations in Counterpoint, ShipStation can be configured with multiple "Ship From" locations. Each Ship From location is assigned a ShipStation Warehouse ID (retrievable only via API). 
 
 This configuration option allows you to assign the ShipStation Warehouse ID value to the corresponding location in Counterpoint. When documents are pushed from Counterpoint to ShipStation, the correct Ship From location will be set automatically.
 
@@ -230,7 +237,7 @@ The weight field on an item record in Counterpoint stores only a numeric value; 
  - If all are in ounces or grams, select the matching unit. 
  - If items are stored in mixed units, you must standardize them to a single unit before integration. 
 - The setting applies globally and must remain consistent across all item records in Counterpoint. 
-- When weights are sent to ShipStation, the numerical value and configured unit of measure are converted into ShipStation’s format, expressed in pounds and ounces (for example, 1.5 lb becomes 1 lb 8 oz). 
+- When weights are sent to ShipStation, the numerical value and configured unit of measure are converted into ShipStation's format, expressed in pounds and ounces (for example, 1.5 lb becomes 1 lb 8 oz). 
 
 ![Counterpoint Item Record with Weight on Other Tab](./images/counterpoint-item-other-tab-weight-field.png)
 
@@ -241,7 +248,7 @@ Release tickets and transfer outs are pushed to ShipStation immediately, but tra
 This field is automatically updated each time the connector is upgraded. It is provided for reference only and does not require configuration.
 
 **Release Tickets ShipStation Store ID and Transfer Outs ShipStation Store ID**  
-ShipStation supports multiple “stores” within its user interface. These stores are unrelated to stores in Counterpoint. Instead, they are used to organize shipments—often by platform, such as POS, ecommerce, or marketplace. 
+ShipStation supports multiple "stores" within its user interface. These stores are unrelated to stores in Counterpoint. Instead, they are used to organize shipments—often by platform, such as POS, ecommerce, or marketplace. 
 
 Each ShipStation store has a Store ID value (retrievable only via API). This configuration allows you to assign a ShipStation Store ID so that release tickets and transfer outs are pushed to a specific ShipStation store. Many clients will use only a single ShipStation store, but the option is available for more complex setups.
 
